@@ -1,0 +1,8 @@
+*{
+    margin: 10px;
+    padding: 0px;
+    justify-content: center;
+}
+label{
+    font-weight: bold;
+}

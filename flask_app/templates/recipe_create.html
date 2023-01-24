@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Add Recipe</title>
+
+</head>
+
+<body>
+
+        <div class="navbar">
+            <h1 class="display-3"> Add your recipe, {{user.first_name}}!!!</h1>
+            <div>
+                <a href="/recipes"><button type="submit">Back to Recipes</button></a>
+
+                <a href="/"><button type="submit">Logout</button></a>
+            </div>
+
+        </div>
+
+        <center>
+            <div class="row">
+
+
+<div class=" row col-xs-10 p-3 border border-dark">
+            <div >
+                <form action='/recipe/new' method='post'>
+                    <div class="form-outline mb-4">
+                        <label class="form-label">Name:</label>
+                        <input type="text" id="name" class="form-control" for="name" name="name" />
+                        {% for message in get_flashed_messages(category_filter=["name"]) %}
+                        <p style="color:red">{{message}}</p><!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label">Description:</label>
+                        <textarea rows="2" cols="10" id="description" class="form-control" for="description"
+                            name="description"></textarea>
+                        {% for message in get_flashed_messages(category_filter=["description"]) %}
+                        <p style="color:red">{{message}}</p><!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label">Instructions:</label>
+                        <textarea rows="4" cols="50" id="instructions" class="form-control" for="instructions"
+                            name="instructions"></textarea>
+                        {% for message in get_flashed_messages(category_filter=["instructions"]) %}
+                        <p style="color:red">{{message}}</p><!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    </div>
+
+            </div>
+            <div >
+                <div class="form-outline mb-4">
+                    <label class="form-label">Date Cooked/Made:</label>
+                    <input type="date" id="date_cooked" class="form-control" for="date_cooked" name="date_cooked" />
+                    {% for message in get_flashed_messages(category_filter=["date_cooked"]) %}
+                    <p style="color:red">{{message}}</p><!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label">Under 30 minutes?:</label>
+                    <div >
+                        <label>yes</label>
+                        <input type="radio" id="under" class="form-control" for="under" name="under" value="1">
+                        <label>no</label>
+                        <input type="radio" id="under" class="form-control" for="under" name="under" value="0">
+                    </div>
+                    {% for message in get_flashed_messages(category_filter=["under"]) %}
+                    <p style="color:red">{{message}}</p><!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                </div>
+                <div>
+                    <a href="/recipe/new"><button type="submit"
+                            class="btn btn-primary btn-block mb-4">Submit</button></a>
+                </div>
+            </div>
+
+            </form>
+        </div>
+
+
+        </div>
+
+        </div>
+
+
+            </div>
+        
+    </center>
+</body>
+</html>
